@@ -24,7 +24,7 @@
             "homevip\\helper\\": "src"
         },
         "files": [
-            "src/Methods/Methods.php"
+            "src/Methods.php"
         ]
     }
 }

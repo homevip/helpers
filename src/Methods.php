@@ -195,7 +195,7 @@ if (!function_exists('sql_debug')) {
  * @return void
  */
 if (!function_exists('error')) {
-    function error($code = 200, $msg = NULL, $data = [])
+    function error($code = 200, $data = [])
     {
         $data = [
             'code'      => $code,

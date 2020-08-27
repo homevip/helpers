@@ -199,7 +199,7 @@ if (!function_exists('error')) {
     {
         $data = [
             'code'      => $code,
-            'msg'       => $msg ?? config('response_code')[$code],
+            'msg'       => config('response_code')[$code],
             'data'      => $data
         ];
 

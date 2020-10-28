@@ -382,6 +382,31 @@ if (!function_exists('stringToArray')) {
 
 
 /**
+ * 唯一的(16进制)数字串
+ * 
+ * @return void
+ */
+if (!function_exists('uuid_create')) {
+    function uuid_create()
+    {
+        return sprintf(
+            '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0x0fff) | 0x4000,
+            mt_rand(0, 0x3fff) | 0x8000,
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0xffff)
+        );
+    }
+} else {
+    return uuid_create();
+}
+
+
+/**
  * 获取汉字拼音的首字母
  * 
  * @param string $str

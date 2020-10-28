@@ -326,6 +326,33 @@ if (!function_exists('tree')) {
 
 
 /**
+ * Tree 树形结构的数据转数组
+ * 
+ * @param array    $tree        $tree 树形结构的数据
+ * @param string   $children    子节点的键
+ * @param array    $list        过渡用的中间数组
+ * @return array
+ */
+if (!function_exists('treeToList')) {
+    function treeToList($tree, $children = '_child', &$list = array())
+    {
+        if (!empty($tree) && is_array($tree)) {
+            foreach ($tree as $key => $value) {
+                $reffer = $value;
+                if (isset($reffer[$children])) {
+                    unset($reffer[$children]);
+                    treeToList($value[$children], $children, $list);
+                }
+                $list[] = $reffer;
+            }
+        }
+        return $list;
+    }
+}
+
+
+
+/**
  * 格式化价格 保留到两位小数
  * 
  * @param string $price 金额

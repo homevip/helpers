@@ -523,3 +523,41 @@ if (!function_exists('postCurl')) {
         return $data;
     }
 }
+
+
+/**
+ * 递归移动目录所有内容到指定目录
+ * 
+ * @param $disDir 旧目录
+ * $targetDir 目标目录
+ * @return bool
+ * @throws \Exception
+ */
+
+
+/**
+ * 数值累加 (不溢出)
+ * 
+ * @return string
+ */
+if (!function_exists('inc')) {
+    function inc($value)
+    {
+        if (empty($value)) {
+            return "A";
+        }
+        if (!isset($value[1])) {
+            $code = ord($value[0]) + 1;
+            if ($code <= ord("Z")) {
+                return chr($code);
+            }
+            return "AA";
+        }
+        $n = strlen($value);
+        $code = ord($value[$n - 1]) + 1;
+        if ($code <= ord("Z")) {
+            return substr($value, 0, $n - 1) . chr($code);
+        }
+        return inc(substr($value, 0, $n - 1)) . "A";
+    }
+}

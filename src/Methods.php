@@ -37,13 +37,12 @@ if (!function_exists('getIP')) {
 if (!function_exists('S')) {
     function S(string $name, $value = '', int $options = 60)
     {
-        $config = [
+        $cache = Redis::instance([
             'host'      => config('database.redis.cache.host'),
             'port'      => config('database.redis.cache.port'),
             'password'  => config('database.redis.cache.password'),
             'db'        => config('database.redis.cache.database'),
-        ];
-        $cache = new Redis($config);
+        ]);
 
         if ('' === $value) {
             // 获取缓存
